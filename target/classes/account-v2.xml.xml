@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ctg="http://www.mulesoft.org/schema/mule/ctg" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/ctg http://www.mulesoft.org/schema/mule/ctg/current/mule-ctg.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <apikit:config name="account-config-v2" raml="account-v2.raml" consoleEnabled="false" doc:name="Router"/>
+    <flow name="account-v2-main">
+        <http:listener config-ref="account-httpListenerConfig" path="/V2.0api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="account-config-v2" doc:name="APIkit Router"/>
+        <exception-strategy ref="account-apiKitGlobalExceptionMapping-v2" doc:name="Reference Exception Strategy"/>
+    </flow>
+
+    <flow name="get:/account/{accountNumber}:account-config-v2">
+        <dw:transform-message doc:name="Transform Message" metadata:id="8eb92d2c-8075-47a4-9236-0afd28c57d65">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output text/plain schemaPath = "rq.ffd" , segmentIdent = "DEP-HOST-CB-INQ-COMP-17-I", encoding="cp037"
+%namespace ns0 http://com.sti/Service/Intg/DDA/DDAInq/ServiceSpecification/DepositArrangementOverview/
+---
+[{
+	QFQFRQHD-HEADER: {
+		QFQFRQHD-FSH-VER-MOD: 'V02M00',
+		QFQFRQHD-FSH-SERVICE-NAME: 'QFOBOL0A',
+		QFQFRQHD-FSH-SERV-INV-METH: 'PP',
+		QFQFRQHD-FSH-INPUT-LENGTH: 140,
+		QFQFRQHD-FSH-OUTPUT-LENGTH: 3625,
+		QFQFRQHD-FSH-ID: 20160907,
+		QFQFRQHD-FSH-ACTION: 'CALL',
+		QFQFRQHD-FSH-TRACE-IND: "B"
+	},
+	DEP-PARMS-DATA-V: {
+		BANK-NBR: 175,
+		ACCT-NBR: flowVars.accountNumber,
+		DEP-PROC-LINE-NBR: '01',
+		BEG-ACT-SEG-NBR: 0,
+		DEP-ACTN-CD: "TBD",
+		EXACT-LOW-DT: '1910-01-01',
+		HIGH-DT: '1910-01-01',
+		EXACT-LOW-AMT: 0,
+		HIGH-AMT: 0,
+		EXACT-LOW-SER-NBR: 0,
+		HIGH-SER-NBR: 0,
+		PROD-TYP-DISP-TXT: "OB"
+	}
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <ctg:execute-using-commarea config-ref="CTG__Configuration" doc:name="CTG" commareaLength="32250" programName="QFQFOLDV" replyLength="32250" tpnName="QF06"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="2d72110e-a80d-413e-9fa1-5ad410a5abc8">
+            <dw:input-payload mimeType="text/plain">
+                <dw:reader-property name="schemaPath" value="wed.ffd"/>
+                <dw:reader-property name="segmentIdent" value="DEP-HOST-CB-INQ-COMP-17-O"/>
+            </dw:input-payload>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	name: payload[0].JRNL-ACCT-TRAN-D.ACCT-SHORT-NM,
+	balance: payload[0].JRNL-ACCT-TRAN-D.ACCT-AVAIL-BAL,
+	averageBalance: payload[0].JRNL-ACCT-TRAN-D.ACCT-3MO-AVG-BAL
+}]]></dw:set-payload>
+        </dw:transform-message>
+
+    </flow>
+    <apikit:mapping-exception-strategy name="account-apiKitGlobalExceptionMapping-v2">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>
