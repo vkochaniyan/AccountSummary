@@ -1,0 +1,50 @@
+form: COPYBOOK
+id: 'DEP-HOST-CB-INQ-COMP-17-I'
+values: 
+- name: 'QFQFRQHD-HEADER'
+  values: 
+  - { name: 'QFQFRQHD-FSH-VER-MOD', type: String, length: 6 }
+  - { name: 'QFQFRQHD-FSH-SERVICE-NAME', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-SERVICE-METHOD', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-SERV-INV-METH', type: String, length: 2 }
+  - { name: 'QFQFRQHD-FSH-INPUT-LENGTH', type: Integer, length: 8, format: { justify: ZEROES, sign: UNSIGNED } }
+  - { name: 'QFQFRQHD-FSH-OUTPUT-LENGTH', type: Integer, length: 8, format: { justify: ZEROES, sign: UNSIGNED } }
+  - { name: 'QFQFRQHD-FSH-TRAN', type: String, length: 6 }
+  - { name: 'QFQFRQHD-FSH-ID', type: String, length: 128 }
+  - { name: 'QFQFRQHD-FSH-TIMESTAMP', type: String, length: 26 }
+  - { name: 'QFQFRQHD-FSH-SERVICE', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-APPL', type: String, length: 2 }
+  - { name: 'QFQFRQHD-FSH-LOCATION', type: String, length: 20 }
+  - { name: 'QFQFRQHD-FSH-USER-ID', type: String, length: 8 }
+  - { name: 'QFQFRQHD-FSH-ACTION', type: String, length: 4 }
+  - { name: 'QFQFRQHD-FSH-IPROC-FLG', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-PRI-LVL', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-TRACE-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-SYNC-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-CODE-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-COMPRESS-ENA', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-COMPRESS-DATA', type: String, length: 1 }
+  - name: 'QFQFRQHD-FSH-EXCEPTION-AREA'
+    values: 
+    - { name: 'QFQFRQHD-FSH-EXCP-SEV', type: String, length: 2 }
+    - { name: 'QFQFRQHD-FSH-EXCEPTION', type: String, length: 8 }
+    - { name: 'QFQFRQHD-FSH-DESCRIPTION', type: String, length: 128 }
+  - { name: 'QFQFRQHD-EXPAND', type: String, length: 41 }
+- name: 'DEP-PARMS-DATA-V'
+  values: 
+  - { name: 'BANK-NBR', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'DEP-PROC-LINE-NBR', type: String, length: 2 }
+  - { name: 'BEG-ACT-SEG-NBR', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'DEP-ACTN-CD', type: String, length: 15 }
+  - { name: 'ACT-CYC-CD', type: String, length: 1 }
+  - { name: 'SHCA-TYP-CD', type: String, length: 1 }
+  - { name: 'EXACT-LOW-DT', type: String, length: 10 }
+  - { name: 'HIGH-DT', type: String, length: 10 }
+  - { name: 'EXACT-LOW-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'HIGH-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'EXACT-LOW-SER-NBR', type: Binary, length: 4, format: { signed: TRUE, digits: 8 } }
+  - { name: 'HIGH-SER-NBR', type: Binary, length: 4, format: { signed: TRUE, digits: 8 } }
+  - { name: 'PROD-TYP-NM', type: String, length: 25 }
+  - { name: 'PROD-TYP-DISP-TXT', type: String, length: 30 }
+- { name: 'QFQFRQHD-FILLER', type: String, length: 31610 }

@@ -1,0 +1,18 @@
+#%RAML 0.8
+baseUri: http://SunTrustInc-Simple.cloudhub.io
+title: Account
+version: version-1.0
+
+/account/{accountNumber}:
+  displayName: Account balance for number
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "name": "John Doe",
+                  "balance": 1000
+              }
+

@@ -1,0 +1,22 @@
+#%RAML 0.8
+baseUri: http://SunTrustInc-Simple.cloudhub.io
+title: Reference lookup
+version: version-1.0
+
+/referenceLookup:
+  displayName: Account balance for number
+  get:
+    queryParameters:
+      type:
+      code:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                  "type": "State",
+                  "code": "GA",
+                  "value": "Georgia"
+              }
+

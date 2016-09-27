@@ -1,0 +1,493 @@
+form: COPYBOOK
+id: 'DEP-HOST-CB-INQ-COMP-17-O'
+values: 
+- name: 'QFQFRQHD-HEADER'
+  values: 
+  - { name: 'QFQFRQHD-FSH-VER-MOD', type: String, length: 6 }
+  - { name: 'QFQFRQHD-FSH-SERVICE-NAME', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-SERVICE-METHOD', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-SERV-INV-METH', type: String, length: 2 }
+  - { name: 'QFQFRQHD-FSH-INPUT-LENGTH', type: Integer, length: 8, format: { justify: ZEROES, sign: UNSIGNED } }
+  - { name: 'QFQFRQHD-FSH-OUTPUT-LENGTH', type: Integer, length: 8, format: { justify: ZEROES, sign: UNSIGNED } }
+  - { name: 'QFQFRQHD-FSH-TRAN', type: String, length: 6 }
+  - { name: 'QFQFRQHD-FSH-ID', type: String, length: 128 }
+  - { name: 'QFQFRQHD-FSH-TIMESTAMP', type: String, length: 26 }
+  - { name: 'QFQFRQHD-FSH-SERVICE', type: String, length: 32 }
+  - { name: 'QFQFRQHD-FSH-APPL', type: String, length: 2 }
+  - { name: 'QFQFRQHD-FSH-LOCATION', type: String, length: 20 }
+  - { name: 'QFQFRQHD-FSH-USER-ID', type: String, length: 8 }
+  - { name: 'QFQFRQHD-FSH-ACTION', type: String, length: 4 }
+  - { name: 'QFQFRQHD-FSH-IPROC-FLG', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-PRI-LVL', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-TRACE-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-SYNC-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-CODE-IND', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-COMPRESS-ENA', type: String, length: 1 }
+  - { name: 'QFQFRQHD-FSH-COMPRESS-DATA', type: String, length: 1 }
+  - name: 'QFQFRQHD-FSH-EXCEPTION-AREA'
+    values: 
+    - { name: 'QFQFRQHD-FSH-EXCP-SEV', type: String, length: 2 }
+    - { name: 'QFQFRQHD-FSH-EXCEPTION', type: String, length: 8 }
+    - { name: 'QFQFRQHD-FSH-DESCRIPTION', type: String, length: 128 }
+  - { name: 'QFQFRQHD-EXPAND', type: String, length: 41 }
+- name: 'STD-RTRN-V'
+  values: 
+  - { name: 'RTRN-CD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'APPL-ID', type: String, length: 10 }
+  - { name: 'APPL-SYS-CD', type: String, length: 5 }
+  - { name: 'STD-MODUL-ID', type: String, length: 8 }
+  - { name: 'RULE-NAME-R0', type: String, length: 30 }
+  - { name: 'RTRN-ERROR-NBR', type: Binary, length: 4, format: { signed: TRUE, digits: 8 } }
+  - { name: 'LAST-UPDT-TS', type: String, length: 26 }
+- name: 'JRNL-ACCT-INT-D'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'INT-PLAN', type: String, length: 3 }
+  - { name: 'INT-PLAN-OPEN-DT', type: String, length: 10 }
+  - { name: 'LAST-INT-CHNG-DT', type: String, length: 10 }
+  - { name: 'RATE-POINT-1-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'RATE-POINT-2-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'RATE-POINT-3-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'RATE-POINT-4-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'RATE-POINT-5-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'ACCRD-INT-ADJ-DT', type: String, length: 10 }
+  - { name: 'INT-CURR-ACCR-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-ADJ-ACCR-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-PAID-YTD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-ADJ-PD-YTD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-IRS-WD-YTD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-IRS-AD-YTD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-FATCA-WHOLD-YTD', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'INT-ADJ-PD-YTD-DT', type: String, length: 10 }
+  - { name: 'INT-IRS-WHOLD-DT', type: String, length: 10 }
+  - { name: 'WHLDNG-ADJ-DT', type: String, length: 10 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-ACCT-OFFCR-D'
+  count: 3
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'OFFCR-ID', type: String, length: 8 }
+  - { name: 'OFFCR-CO-CD', type: String, length: 7 }
+  - { name: 'OFFCR-TYP-CD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-ACCT-STMT-D'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'STMT-PRD-STA-DT', type: String, length: 10 }
+  - { name: 'STMT-PRD-END-DT', type: String, length: 10 }
+  - { name: 'ADDL-STMT-COPY-IND', type: String, length: 1 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-ACCT-TRAN-D'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'ACCT-TYP-CD', type: String, length: 3 }
+  - { name: 'OFCR-CD', type: String, length: 5 }
+  - { name: 'CTR-NBR', type: Packed, length: 4, format: { signed: TRUE } }
+  - { name: 'BANK-NBR', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'ACCT-SHORT-NM', type: String, length: 20 }
+  - { name: 'ACCT-TIN', type: String, length: 9 }
+  - { name: 'CLI-TIN-FORMAT', type: String, length: 1 }
+  - { name: 'ACCT-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-AVAIL-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-3MO-AVG-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-BAL-DT', type: String, length: 10 }
+  - { name: 'ACCT-12MO-AVG-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-OPEN-DT', type: String, length: 10 }
+  - { name: 'ACCT-CLOS-DT', type: String, length: 10 }
+  - { name: 'BRN-NBR', type: String, length: 4 }
+  - { name: 'ACCT-STAT-CD', type: String, length: 16 }
+  - { name: 'TITLE-LINE-1', type: String, length: 40 }
+  - { name: 'TITLE-LINE-2', type: String, length: 40 }
+  - { name: 'TITLE-LINE-3', type: String, length: 40 }
+  - { name: 'TITLE-LINE-4', type: String, length: 40 }
+  - { name: 'SRC-OF-FUNDS-CD', type: String, length: 3 }
+  - { name: 'EMP-CD', type: String, length: 1 }
+  - { name: 'ACCT-CLOS-RSN-DESC', type: String, length: 20 }
+  - { name: 'NEW-OLD-ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CHNG-DT', type: String, length: 10 }
+  - { name: 'LAST-UPDT-ID', type: String, length: 8 }
+  - { name: 'LAST-UPDT-TS', type: String, length: 26 }
+  - { name: 'JRNL-TRAN-ACTN', type: String, length: 1 }
+  - { name: 'ACCT-MAINT-REQ-NM', type: String, length: 40 }
+  - { name: 'ACCT-MAINT-ID-TXT', type: String, length: 20 }
+  - { name: 'ACCT-REQ-CD', type: String, length: 3 }
+  - { name: 'JRNL-TRAN-ID', type: String, length: 10 }
+  - { name: 'TRAN-TYP-CD', type: String, length: 4 }
+  - { name: 'TRAN-BEG-TS', type: String, length: 26 }
+  - { name: 'PRFD-CLI-CD', type: String, length: 2 }
+  - { name: 'ACCT-OPEN-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'WHLDNG-EXE-ST-CD', type: String, length: 2 }
+  - { name: 'INTL-CD', type: String, length: 5 }
+  - { name: 'CERT-DT', type: String, length: 10 }
+  - { name: 'CERT-LINE-NBR', type: String, length: 1 }
+  - { name: 'CERT-FLAG', type: String, length: 1 }
+  - { name: 'OUTST-ITEMS', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'PREV-ACCT-TYP-CD', type: String, length: 3 }
+  - { name: 'STMT-PREV-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'TOT-TO-CLI-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'CLSNG-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-BAL-CUR-FLAG', type: String, length: 1 }
+  - { name: 'TITLE-CHNG-RSN-TXT', type: String, length: 20 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-TYPE-BUS-IND', type: String, length: 1 }
+  - { name: 'ACCT-TYPE-INT-IND', type: String, length: 1 }
+- name: 'JRNL-DEMD-DEP-D-60'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'ACCT-MTD-AVG-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MTD-AV-CL-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-3MO-AV-CL-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-12M-AV-CL-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-OD-LIMIT-CD', type: String, length: 1 }
+  - { name: 'ACCT-OD-LIMIT-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MTD-OD-AV-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-3MO-OD-AV-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-12M-OD-AV-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MTD-UCF-AVAMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-3MO-UCF-AVAMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-12M-UCF-AVAMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-REG-CC-HD-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-LEGAL-HOLD-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-OTHER-HLD-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-SFTY-HLD-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-TOT-DB-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-TOT-CR-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MEM-DB-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MEM-CR-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-LAST-DEP-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-COLL-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-NX-CL-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-ACH-PN-DB-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'WHOLD-PCT', type: Packed, length: 4, format: { implicit: 4, signed: TRUE } }
+  - { name: 'STMT-COPY-CD', type: String, length: 1 }
+  - { name: 'STMT-CYC-CD', type: String, length: 3 }
+  - { name: 'HOLD-STMT-CYC-CD', type: String, length: 3 }
+  - { name: 'STMT-FILNG-CD', type: String, length: 1 }
+  - { name: 'HOLD-STMT-FILNG-CD', type: String, length: 1 }
+  - { name: 'STMT-CAT-CD', type: String, length: 2 }
+  - { name: 'CK-CHRG-CD', type: String, length: 1 }
+  - { name: 'AVAIL-CD', type: String, length: 1 }
+  - { name: 'CLOS-ZERO-BAL-FLAG', type: String, length: 1 }
+  - { name: 'VOICE-RSPNS-FLAG', type: String, length: 1 }
+  - { name: 'CNFDTL-FLAG', type: String, length: 1 }
+  - { name: 'DEBIT-CARD-FLAG', type: String, length: 1 }
+  - { name: 'ZBA-SIM-STMT-FLAG', type: String, length: 1 }
+  - { name: 'ZBA-CDA-FLAG', type: String, length: 1 }
+  - { name: 'LAST-STMT-DT', type: String, length: 10 }
+  - { name: 'LAST-NSF-RT-DT', type: String, length: 10 }
+  - { name: 'LAST-NSF-PD-DT', type: String, length: 10 }
+  - { name: 'LAST-DEP-DT', type: String, length: 10 }
+  - { name: 'LAST-ACT-DT', type: String, length: 10 }
+  - { name: 'LAST-MAINT-DT', type: String, length: 10 }
+  - { name: 'CLOSING-DISP-CD', type: String, length: 1 }
+  - { name: 'IMP-CHK-CHG-FLAG', type: String, length: 1 }
+  - { name: 'ACCT-ANAL-CD', type: String, length: 1 }
+  - { name: 'ACCT-ANAL-CHGST-CD', type: String, length: 1 }
+  - { name: 'ACCT-SRC-COVRG-CD', type: String, length: 3 }
+  - { name: 'ACCT-COVRG-ACCT-NO', type: String, length: 20 }
+  - { name: 'SHCA-FLAG', type: String, length: 1 }
+  - { name: 'NSF-FLAG', type: String, length: 1 }
+  - { name: 'OBIQ-TITLE-LINE-1', type: String, length: 40 }
+  - { name: 'OBIQ-TITLE-LINE-2', type: String, length: 40 }
+  - { name: 'OBIQ-TITLE-LINE-3', type: String, length: 40 }
+  - { name: 'OBIQ-TITLE-LINE-4', type: String, length: 40 }
+  - { name: 'OBIQ-TITLE-LINE-5', type: String, length: 40 }
+  - { name: 'SHCA-FEE-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-TL-PST-DB-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-TL-PST-CR-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-TTL-HOLD-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-TL-MEM-DB-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-TL-MEM-CR-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'STMT-AVAIL-BAL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACT-PROC-DT', type: String, length: 10 }
+  - { name: 'ACCT-SRC-COVRG-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'WORKPL-BANK-CD', type: String, length: 5 }
+  - { name: 'CHRG-OFF-CD', type: String, length: 1 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+  - { name: 'SUMM-STMT-CORE-FLAG', type: String, length: 1 }
+  - { name: 'DATE-LAST-CONTACT', type: String, length: 10 }
+  - { name: 'FLOAT-REPORT-FLAG', type: String, length: 1 }
+  - { name: 'ACCT-RUN-CUR-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-RUN-AVAIL-AMT', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'REL-ACCT-ADD-DEL-IND', type: String, length: 1 }
+  - { name: 'REL-ACCT-STMT-IND', type: String, length: 1 }
+  - { name: 'REL-ACCT-DS-BANK-NBR', type: String, length: 4 }
+  - { name: 'REL-ACCT-DS-ACCT-NBR', type: String, length: 13 }
+  - { name: 'REL-ACCT-CD-BANK-NBR', type: String, length: 4 }
+  - { name: 'REL-ACCT-CD-CERT-NBR', type: String, length: 13 }
+  - { name: 'REL-ACCT-CD-CUST-NBR', type: String, length: 13 }
+  - { name: 'SAFEBOX-ADD-DEL-IND', type: String, length: 1 }
+  - { name: 'SAFEBOX-BANK-NBR', type: String, length: 4 }
+  - { name: 'SAFEBOX-BOX-NBR', type: String, length: 7 }
+  - { name: 'SAFEBOX-LOC-NBR', type: String, length: 7 }
+  - { name: 'PREM-PAID-TO-CUST', type: String, length: 7 }
+  - { name: 'REGION-CD', type: String, length: 3 }
+  - { name: 'DAILY-CHRG-PLAN', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'CHNL-PROCESS-CD', type: String, length: 2 }
+  - { name: 'CHNL-PROCESS-EXP-DT', type: String, length: 10 }
+  - { name: 'MIN-COLL-BAL-CTD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'MIN-COLL-BAL-DT', type: String, length: 10 }
+  - { name: 'MIN-COLL-BAL-PCTD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'MIN-COLL-BAL-PCTD-DT', type: String, length: 10 }
+  - { name: 'AVG-COLL-BAL-CTD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'AVG-COLL-BAL-PCTD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+- name: 'JRNL-ACCT-CTR-D'
+  count: 2
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'CTR-CD', type: String, length: 7 }
+  - { name: 'BANK-CD', type: String, length: 7 }
+  - { name: 'CTR-TYP-CD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-ADDR-TRAN-D'
+  values: 
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'ADDR-TYP-CD', type: String, length: 3 }
+  - { name: 'ADDR-LINE-1', type: String, length: 40 }
+  - { name: 'ADDR-LINE-2', type: String, length: 40 }
+  - { name: 'ADDR-LINE-3', type: String, length: 40 }
+  - { name: 'ADDR-LINE-4', type: String, length: 40 }
+  - { name: 'ADDR-LINE-5', type: String, length: 40 }
+  - { name: 'CITY-NM', type: String, length: 20 }
+  - { name: 'ST-CD', type: String, length: 2 }
+  - { name: 'ZIP-CD', type: Binary, length: 4, format: { signed: TRUE, digits: 8 } }
+  - { name: 'ZIP-SUPP-CD', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'ADDR-FRGN-FLAG', type: String, length: 1 }
+  - { name: 'ADDR-EFF-DT', type: String, length: 10 }
+  - { name: 'ADDR-EXPIR-DT', type: String, length: 10 }
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'LAST-UPDT-ID', type: String, length: 8 }
+  - { name: 'LAST-UPDT-TS', type: String, length: 26 }
+  - { name: 'JRNL-TRAN-ACTN', type: String, length: 1 }
+  - { name: 'JRNL-TRAN-ID', type: String, length: 10 }
+  - { name: 'TRAN-TYP-CD', type: String, length: 4 }
+  - { name: 'TRAN-BEG-TS', type: String, length: 26 }
+  - { name: 'MAIL-HNDL-CD', type: String, length: 2 }
+  - { name: 'SPEC-MAIL-HANDL-CD', type: String, length: 20 }
+  - { name: 'CLI-KEY-DESC', type: String, length: 50 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-FEE-WAIVE-D-90'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'WAIVE-QUALF-BAL-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'WAIVE-QUALF-EXCP-DT', type: String, length: 10 }
+  - { name: 'WAIVE-QUALF-EXCP-CD', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'WAIVE-EXPIR-DT', type: String, length: 10 }
+  - { name: 'WAIVE-EXPLAIN-TXT', type: String, length: 20 }
+  - { name: 'PROD-TYP-CD', type: String, length: 3 }
+  - { name: 'WAIVE-SRV-FEE-CD', type: String, length: 2 }
+  - { name: 'WAIVE-EX-WD-CD', type: String, length: 2 }
+  - { name: 'WAIVE-ATM-CD', type: String, length: 2 }
+  - { name: 'WAIVE-STOP-PMT-CD', type: String, length: 2 }
+  - { name: 'WAIVE-RET-DEP-CD', type: String, length: 2 }
+  - { name: 'WAIVE-MAIL-CD', type: String, length: 2 }
+  - { name: 'WAIVE-NSF-CD', type: String, length: 2 }
+  - { name: 'WAIVE-UAF-CD', type: String, length: 2 }
+  - { name: 'WAIVE-UCF-CD', type: String, length: 2 }
+  - { name: 'WAIVE-OD-TRN-CD', type: String, length: 2 }
+  - { name: 'PKG-QEXCP-ACCT-NBR', type: String, length: 20 }
+  - { name: 'CK-ORD-CHK-CHG-CD', type: String, length: 1 }
+  - { name: 'WAIVE-INTVL-FEE-CD', type: String, length: 2 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+  - { name: 'CC-CHG-WAIVE', type: String, length: 2 }
+  - { name: 'CC-CHG-WAIVE-EXP-DT', type: String, length: 10 }
+  - { name: 'STOLI-FEE-WAIVE', type: String, length: 2 }
+  - { name: 'CONT-OD-FEE-CD', type: String, length: 2 }
+  - { name: 'DEP-CORRECT-FEE-CD', type: String, length: 2 }
+  - { name: 'CHK-HNDLE-FEE-CD', type: String, length: 2 }
+  - { name: 'CHK-HNDLE-EXP-DT', type: String, length: 10 }
+  - { name: 'DEP-STMT-SUPPRESS-FLG', type: String, length: 1 }
+- name: 'JRNL-NSF-UAF-UCF-D'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'NSF-ITM-TODAY-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-ITM-TODAY-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UAF-ITMS-TODAY-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'CNSC-DAYS-OD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-ITM-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-ITM-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-ITM-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-TMS-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-TMS-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-RT-TMS-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-ITM-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-ITM-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-ITM-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-TMS-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-TMS-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'NSF-PD-TMS-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'OD-DAY-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'OD-DAY-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'OD-DAY-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UAF-TMS-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UAF-TMS-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UAF-TMS-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-TMS-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-TMS-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-TMS-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-DAY-MTD-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-DAY-3MO-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'UCF-DAY-12M-QTY', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-SVS-FEE-D'
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'PRCNG-CD', type: String, length: 3 }
+  - { name: 'PRCNG-VAR-CD', type: String, length: 3 }
+  - { name: 'INTVL-CHRG-DESC', type: String, length: 30 }
+  - { name: 'INTVL-CHRG-MNTH-CD', type: String, length: 2 }
+  - { name: 'INTVL-CHRG-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'LAST-SVS-FEE-DT', type: String, length: 10 }
+  - { name: 'REL-ACCT-NBR', type: String, length: 20 }
+  - { name: 'MIN-SVC-WAIVE-BAL', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'JRNL-DEMD-DEP-REMK-D'
+  count: 5
+  values: 
+  - { name: 'NB-ID', type: String, length: 10 }
+  - { name: 'NB-PROC-STAT-CD', type: String, length: 1 }
+  - { name: 'ACCT-NBR', type: String, length: 20 }
+  - { name: 'ACCT-CLAS-CD', type: String, length: 3 }
+  - { name: 'REMK-SEQ-NBR', type: Binary, length: 2, format: { signed: TRUE, digits: 4 } }
+  - { name: 'REMK-TXT', type: String, length: 40 }
+  - { name: 'JRNL-ROW-STAT-CD', type: String, length: 1 }
+- name: 'DEP-ZBA-ACCT-INFO-D'
+  values: 
+  - { name: 'ACCT-AVAIL-BAL', type: Packed, length: 8, format: { implicit: 2, signed: TRUE } }
+  - { name: 'ACCT-MSTR-NBR', type: String, length: 20 }
+  - { name: 'ACCT-SUPMSTR-NBR', type: String, length: 20 }
+- name: 'DEP-OBIQ-ADDTNL-80-D'
+  values: 
+  - { name: 'ORGNL-BANK', type: String, length: 4 }
+  - { name: 'PROCESS-LINE', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'CDA-FLAG', type: String, length: 1 }
+  - { name: 'DAY-2-SITE', type: Packed, length: 1, format: { signed: TRUE } }
+  - { name: 'COST-CNTR-ST', type: String, length: 2 }
+  - { name: 'RT-ABA-NUM', type: Packed, length: 5, format: { signed: TRUE } }
+  - { name: 'LOB-FLAG', type: String, length: 3 }
+  - { name: 'PBLC-FNDS-DISTRICT', type: Packed, length: 2, format: { signed: TRUE } }
+  - { name: 'BROKERAGE-ACCT-NUM', type: String, length: 9 }
+  - { name: 'AIA-NET-MRKT-VAL', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AIA-MRKT-VAL', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AIA-CASH-BAL', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AIA-MARGIN-DB-BAL', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AIA-AVAIL-MARGIN', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'MIN-COLL-BAL-CTD-80', type: Packed, length: 6, format: { signed: TRUE } }
+  - { name: 'MIN-COLL-BAL-PCTD-80', type: Packed, length: 6, format: { signed: TRUE } }
+  - { name: 'AVG-COLL-BAL-CTD-80', type: Packed, length: 6, format: { signed: TRUE } }
+  - { name: 'AVG-COLL-BAL-PCTD-80', type: Packed, length: 6, format: { signed: TRUE } }
+  - { name: 'PRCNG-CD-80', type: String, length: 4 }
+- name: 'DEP-CHECK-ORDER-V-91'
+  values: 
+  - { name: 'CHECK-ORDER-PGM-CD', type: String, length: 2 }
+  - { name: 'CHECK-ORDER-BILL-CD', type: String, length: 2 }
+- name: 'DEP-STMT-SUPRESS-V-11'
+  values: 
+  - { name: 'DEP-HLD-STMT-SUPPRESS-FLG', type: String, length: 1 }
+  - { name: 'DEP-OB-COMB-STMT-FLG', type: String, length: 1 }
+- name: 'DEP-CHECK-VIEW-125'
+  values: 
+  - { name: 'DEP-CHK-VENDOR-IND', type: String, length: 1 }
+  - { name: 'DEP-CHK-FEE-WAIVE', type: String, length: 2 }
+- name: 'INTEREST-ENHANCEMENTS'
+  values: 
+  - { name: 'CURR-INT-RATE', type: Packed, length: 5, format: { implicit: 5, signed: TRUE } }
+  - { name: 'INT-RATE-INDICATOR', type: String, length: 1 }
+  - { name: 'INT-RATE-EXPIR-DT', type: String, length: 10 }
+- name: 'STMT-SUPPRESS'
+  values: 
+  - { name: 'ONLNE-STMT-ONLY-FLG', type: String, length: 1 }
+  - { name: 'PEND-ONLNE-ONLY-FLG', type: String, length: 1 }
+- name: 'CHKNG-ENHMNT'
+  values: 
+  - { name: 'GRADUATE-DATE', type: String, length: 8 }
+- name: 'DEP-ADDITIONAL-FLDS'
+  values: 
+  - { name: 'WAIVE-SKYMILE-CD', type: String, length: 2 }
+  - { name: 'SKYMILE-EXP-DT', type: String, length: 10 }
+- name: 'DEP-EXTRA-FIELDS'
+  values: 
+  - { name: 'AMT-OD-CHG-CTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-RET-ITEM-CHG-CTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-OD-CHG-PCTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-RET-ITEM-CHG-PCTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-OD-CHG-YTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-RET-ITEM-CHG-YTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-OD-CHG-YTD-PCTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'AMT-RET-ITEM-CHG-YTD-PCTD', type: Packed, length: 5, format: { implicit: 2, signed: TRUE } }
+  - { name: 'DEP-AUTO-MORTG-PAY-FLG', type: String, length: 1 }
+  - { name: 'DEP-OD-OPT-IND', type: String, length: 1 }
+  - { name: 'DEP-OD-OPT-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-OD-OPT-REQ-NAME', type: String, length: 40 }
+  - { name: 'DEP-OD-OVR-IND', type: String, length: 1 }
+  - { name: 'DEP-OD-OVR-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-PREV-OD-OPT-IND', type: String, length: 1 }
+  - { name: 'DEP-PREV-OD-OPT-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-PREV-OD-OVR-IND', type: String, length: 1 }
+  - { name: 'DEP-PREV-OD-OVR-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-PRIOR-OD-OPT-IND', type: String, length: 1 }
+  - { name: 'DEP-PRIOR-OD-OPT-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-PRIOR-OD-OVR-IND', type: String, length: 1 }
+  - { name: 'DEP-PRIOR-OD-OVR-IND-EFF-DATE', type: String, length: 10 }
+  - { name: 'DEP-DIGITL-STMT-FEE-WAIVE', type: String, length: 2 }
+  - { name: 'DEP-DIGITL-FEE-WAIVE-EXP-DATE', type: String, length: 10 }
+  - { name: 'DEP-DATE-ONLNE-STMT-CHG', type: String, length: 10 }
+  - { name: 'DEP-ORIG-CHNL-CD', type: String, length: 3 }
+  - { name: 'DEP-MKT-PROMO-CD', type: String, length: 18 }
+  - { name: 'DEP-EXT-OD-LAST-BUS-DATE', type: String, length: 10 }
+  - { name: 'DEP-EXT-OD-LAST-DT-SHR-FLG', type: String, length: 1 }
+  - { name: 'DEP-SAFETY-HOLD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'DEP-TOTAL-HOLD-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'DEP-TOTAL-PENDING-AMT', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+  - { name: 'DEP-SC-WAIVE-GX-EXP-DATE', type: String, length: 10 }
+- name: 'QRA-RAFF-ACCT-QUAL-INQ'
+  values: 
+  - name: 'QRA-RAFF-ACCT-QUAL-REQ'
+    values: 
+    - name: 'QRA-REQ-LINE-CODE'
+      values: 
+      - { name: 'QRA-REQ-LINE-NBR', type: Integer, length: 2, format: { justify: ZEROES, sign: UNSIGNED } }
+    - { name: 'QRA-REQ-BANK-CODE', type: String, length: 4 }
+    - name: 'QRA-REQ-ACCOUNT-NUMBER'
+      values: 
+      - { name: 'QRA-REQ-ACCT-NBR-PRFX', type: Integer, length: 5, format: { justify: ZEROES, sign: UNSIGNED } }
+      - { name: 'QRA-REQ-ACCT-NBR', type: Integer, length: 13, format: { justify: ZEROES, sign: UNSIGNED } }
+  - name: 'QRA-RAFF-ACCT-QUAL-RESP'
+    values: 
+    - { name: 'QRA-ACCT-QUAL-ACCESS-CODE', type: String, length: 1 }
+    - name: 'QRA-RAFF-OUTSTANDING-BAL'
+      values: 
+      - { name: 'QRA-OUTSTANDING-BALANCE', type: Packed, length: 7, format: { implicit: 2, signed: TRUE } }
+    - { name: 'QRA-RETURN-SQLCODE', type: Integer, length: 10, format: { justify: ZEROES, sign: 'ALWAYS_LEFT' } }
+    - { name: 'FILLER1', usage: U, type: String, length: 43 }
+- { name: 'QFQFRQHD-FILLER', type: String, length: 28125 }
