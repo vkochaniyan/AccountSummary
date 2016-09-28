@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     </flow>
 
     <flow name="get:/account/{accountNumber}:account-config">
-        <dw:transform-message doc:name="Transform Message" metadata:id="8eb92d2c-8075-47a4-9236-0afd28c57d65">
+        <dw:transform-message doc:name="Format request copybook" metadata:id="8eb92d2c-8075-47a4-9236-0afd28c57d65">
             <dw:set-payload><![CDATA[%dw 1.0
 %output text/plain schemaPath = "rq.ffd" , segmentIdent = "DEP-HOST-CB-INQ-COMP-17-I", encoding="cp037"
 %namespace ns0 http://com.sti/Service/Intg/DDA/DDAInq/ServiceSpecification/DepositArrangementOverview/
@@ -48,7 +48,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 }]]]></dw:set-payload>
         </dw:transform-message>
         <ctg:execute-using-commarea config-ref="CTG__Configuration" doc:name="CTG" commareaLength="32250" programName="QFQFOLDV" replyLength="32250" tpnName="QF06"/>
-        <dw:transform-message doc:name="Transform Message" metadata:id="2d72110e-a80d-413e-9fa1-5ad410a5abc8">
+        <dw:transform-message doc:name="Map response copybook to output" metadata:id="2d72110e-a80d-413e-9fa1-5ad410a5abc8">
             <dw:input-payload mimeType="text/plain">
                 <dw:reader-property name="schemaPath" value="wed.ffd"/>
                 <dw:reader-property name="segmentIdent" value="DEP-HOST-CB-INQ-COMP-17-O"/>
