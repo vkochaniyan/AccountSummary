@@ -58,7 +58,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 {
 	name: payload[0].JRNL-ACCT-TRAN-D.ACCT-SHORT-NM,
 	balance: payload[0].JRNL-ACCT-TRAN-D.ACCT-AVAIL-BAL,
-	averageBalance: payload[0].JRNL-ACCT-TRAN-D.ACCT-3MO-AVG-BAL
+	averageBalance: payload[0].JRNL-ACCT-TRAN-D.ACCT-12MO-AVG-BAL
 }]]></dw:set-payload>
         </dw:transform-message>
         <logger message="#[payload]" level="INFO" doc:name="Log response"/>
