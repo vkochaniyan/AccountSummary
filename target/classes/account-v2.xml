@@ -5,13 +5,16 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 http://www.mulesoft.org/schema/mule/ctg http://www.mulesoft.org/schema/mule/ctg/current/mule-ctg.xsd
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
-    <apikit:config name="account-config-v2" raml="account-v2.raml" consoleEnabled="false" doc:name="Router"/>
+    <apikit:config name="account-config-v2" raml="account-v2.raml" consoleEnabled="true" doc:name="Router" consolePath="V2.0console"/>
     <flow name="account-main-v2">
         <http:listener config-ref="account-httpListenerConfig" path="/V2.0api/*" doc:name="HTTP"/>
         <apikit:router config-ref="account-config-v2" doc:name="APIkit Router"/>
         <exception-strategy ref="account-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
     </flow>
-
+    <flow name="Account-Summary-V2.0-console">
+        <http:listener config-ref="account-httpListenerConfig" path="/V2.0console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="account-config-v2" doc:name="APIkit Console"/>
+    </flow>
     <flow name="get:/account/{accountNumber}:account-config-v2">
         <set-variable variableName="acctNbr" value="#[116]" doc:name="Set account number"/>
         <dw:transform-message doc:name="JSON to Copybook" metadata:id="8eb92d2c-8075-47a4-9236-0afd28c57d65">

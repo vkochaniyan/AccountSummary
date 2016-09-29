@@ -6,14 +6,17 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/ctg http://www.mulesoft.org/schema/mule/ctg/current/mule-ctg.xsd
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
     <http:listener-config name="account-httpListenerConfig" host="0.0.0.0" port="8150" doc:name="HTTP Listener Configuration"/>
-    <apikit:config name="account-config" raml="account.raml" consoleEnabled="false" doc:name="Router"/>
+    <apikit:config name="account-config" raml="account.raml" consoleEnabled="true" doc:name="Router" consolePath="V1.0console"/>
     <ctg:config name="CTG__Configuration" host="cics-dsplex-01.suntrust.com" port="13341" serverName="CTG1" username="abc" password="def" doc:name="CTG: Configuration"/>
     <flow name="account-main">
         <http:listener config-ref="account-httpListenerConfig" path="/V1.0api/*" doc:name="HTTP"/>
         <apikit:router config-ref="account-config" doc:name="APIkit Router"/>
         <exception-strategy ref="account-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
     </flow>
-
+    <flow name="Account-Summary-V1.0-console">
+        <http:listener config-ref="account-httpListenerConfig" path="/V1.0console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="account-config" doc:name="APIkit Console"/>
+    </flow>
     <flow name="get:/account/{accountNumber}:account-config">
         <set-variable variableName="acctNbr" value="#[2972]" doc:name="Set account number"/>
         <dw:transform-message doc:name="JSON to Copybook" metadata:id="8eb92d2c-8075-47a4-9236-0afd28c57d65">
